@@ -1,0 +1,9 @@
+# Нормализуем переводы строк. LF везде — важно для shell-скриптов,
+# которые исполняются на Linux-сервере (CRLF ломает bash: ошибки из-за \r).
+* text=auto eol=lf
+*.sh text eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.pdf binary
