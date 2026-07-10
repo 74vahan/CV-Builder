@@ -10,3 +10,17 @@ Thumbs.db
 
 # Dependencies (если появятся)
 node_modules/
+
+# Terraform (состояние и секреты — только локально)
+infra/.terraform/
+infra/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+*.auto.tfvars
+
+# SSH-ключи / service-account JSON — никогда в git
+*.pem
+*.key
+*-key.json

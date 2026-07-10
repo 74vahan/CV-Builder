@@ -44,6 +44,12 @@ npx --yes serve -l 5050 .
 - любой nginx/Apache, отдающий статические файлы.
 Сборка и переменные окружения не требуются.
 
+### Свой сервер в GCP + CI/CD
+В репозитории есть готовая инфраструктура: **Terraform** (`infra/`) поднимает VM в
+Google Cloud с nginx, а **GitHub Actions** (`.github/workflows/deploy.yml`) при
+пуше в `master` автоматически заливает статику по SCP и перезагружает nginx.
+Пошаговый runbook — в [DEPLOY.md](DEPLOY.md).
+
 ## Структура
 ```
 index.html            — разметка страницы и подключение скриптов
@@ -65,6 +71,8 @@ js/
   main.js             — инициализация
   vendor/             — html2canvas, jsPDF (локально)
 i18n/                 — словари en / ru / hy
+infra/                — Terraform: VM в GCP + nginx (см. DEPLOY.md)
+.github/workflows/    — CI/CD: автодеплой на сервер
 memory/               — заметки по проекту (см. memory/INDEX.md)
 ```
 

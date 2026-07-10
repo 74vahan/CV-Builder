@@ -8,6 +8,7 @@
 | [02-ui-i18n.md](02-ui-i18n.md) | Раскладка интерфейса, система локализации, ключи |
 | [03-templates.md](03-templates.md) | Стили дизайна CV, как добавить новый шаблон |
 | [04-export.md](04-export.md) | Экспорт в PDF (html2canvas + jsPDF) и HTML |
+| [05-deploy.md](05-deploy.md) | Деплой на GCP (Terraform VM + nginx) и CI/CD (GitHub Actions) |
 
 ## Что это
 

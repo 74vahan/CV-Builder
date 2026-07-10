@@ -1,0 +1,17 @@
+# Скопируйте в terraform.tfvars и подставьте свои значения.
+# terraform.tfvars НЕ коммитится (см. .gitignore).
+
+# Обязательно: ID вашего GCP-проекта (не имя!)
+project_id = "your-gcp-project-id"
+
+# Необязательно (значения по умолчанию подходят):
+# region              = "europe-west3"
+# zone                = "europe-west3-a"
+# machine_type        = "e2-micro"
+# instance_name       = "cv-builder-server"
+# ssh_user            = "deploy"
+# ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+# web_root            = "/var/www/cv-builder"
+
+# Если авторизуетесь service-account-ключом, а не gcloud CLI:
+# credentials_file = "C:/path/to/key.json"

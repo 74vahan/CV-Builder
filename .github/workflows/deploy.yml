@@ -1,0 +1,54 @@
+# ============================================================
+# deploy.yml — автодеплой статического сайта на GCP-сервер.
+#
+# Как работает:
+#   git push в master  ->  GitHub Actions заливает статику по SCP
+#   в web-root на сервере  ->  перезагружает nginx. Руками ничего.
+#
+# Секреты (Settings -> Secrets and variables -> Actions):
+#   SERVER_IP        — публичный IP сервера (terraform output server_public_ip)
+#   SSH_USER         — deploy
+#   SSH_PRIVATE_KEY  — ПРИВАТНЫЙ ssh-ключ целиком (пара к тому, что в Terraform)
+# ============================================================
+
+name: Deploy to GCP
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch: {}   # позволяет запустить деплой вручную из вкладки Actions
+
+# Не гоняем два деплоя одновременно
+concurrency:
+  group: deploy-cv-builder
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload static site over SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # Только файлы сайта — без infra/, .github/, memory/ и docs.
+          # Каталоги копируются рекурсивно (css/, js/, i18n/).
+          source: "index.html,css,js,i18n"
+          target: "/var/www/cv-builder"
+          overwrite: true
+
+      - name: Reload nginx
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+            sudo systemctl reload nginx
+            echo "Deploy finished"
