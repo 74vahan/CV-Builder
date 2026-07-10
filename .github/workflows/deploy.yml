@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5   # v5 работает на Node.js 24 (v4 тянул устаревший Node 20)
 
       - name: Upload static site over SCP
         uses: appleboy/scp-action@v0.1.7
