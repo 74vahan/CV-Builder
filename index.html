@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV Builder</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/editor.css">
+  <link rel="stylesheet" href="css/templates/classic.css">
+  <link rel="stylesheet" href="css/templates/modern.css">
+  <link rel="stylesheet" href="css/templates/minimal.css">
+  <link rel="stylesheet" href="css/templates/elegant.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/print.css">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar no-print">
+    <div class="topbar-brand">
+      <strong data-i18n="app.title">CV Builder</strong>
+      <span class="topbar-subtitle" data-i18n="app.subtitle"></span>
+    </div>
+
+    <div class="topbar-styles" role="group" aria-label="Design styles">
+      <span class="topbar-group-label" data-i18n="topbar.style"></span>
+      <button type="button" class="chip" data-template="classic" data-i18n="style.classic"></button>
+      <button type="button" class="chip" data-template="modern" data-i18n="style.modern"></button>
+      <button type="button" class="chip" data-template="minimal" data-i18n="style.minimal"></button>
+      <button type="button" class="chip" data-template="elegant" data-i18n="style.elegant"></button>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="accent-picker">
+        <span class="topbar-group-label" data-i18n="topbar.accent"></span>
+        <input type="color" id="accent-input" value="#3358ff" data-i18n-title="topbar.accent">
+        <button type="button" class="accent-reset" id="accent-reset"
+                data-i18n-title="topbar.accentReset" aria-label="Reset accent">&times;</button>
+      </div>
+      <label class="lang-picker">
+        <span class="topbar-group-label" data-i18n="topbar.language"></span>
+        <select id="lang-select" data-i18n-title="topbar.language">
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+          <option value="hy">Հայերեն</option>
+        </select>
+      </label>
+      <button type="button" class="btn btn-ghost" id="btn-reset" data-i18n="topbar.reset"></button>
+      <button type="button" class="btn btn-secondary" id="btn-html" data-i18n="topbar.downloadHtml"></button>
+      <button type="button" class="btn btn-primary" id="btn-pdf" data-i18n="topbar.downloadPdf"></button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Editor panel -->
+    <section class="editor no-print" aria-label="Editor">
+
+      <fieldset class="editor-block">
+        <legend data-i18n="section.personal"></legend>
+
+        <div class="photo-row">
+          <div class="photo-controls">
+            <span class="field-label" data-i18n="field.photo"></span>
+            <div class="photo-buttons">
+              <label class="btn btn-secondary btn-file">
+                <span data-i18n="field.uploadPhoto"></span>
+                <input type="file" id="photo-input" accept="image/*" hidden>
+              </label>
+              <button type="button" class="btn btn-ghost" id="photo-remove" data-i18n="field.removePhoto"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <label class="field">
+            <span class="field-label" data-i18n="field.fullName"></span>
+            <input type="text" id="f-fullName" data-i18n-ph="ph.fullName">
+          </label>
+          <label class="field">
+            <span class="field-label" data-i18n="field.jobTitle"></span>
+            <input type="text" id="f-jobTitle" data-i18n-ph="ph.jobTitle">
+          </label>
+          <label class="field">
+            <span class="field-label" data-i18n="field.email"></span>
+            <input type="email" id="f-email">
+          </label>
+          <label class="field">
+            <span class="field-label" data-i18n="field.phone"></span>
+            <input type="text" id="f-phone">
+          </label>
+          <label class="field">
+            <span class="field-label" data-i18n="field.location"></span>
+            <input type="text" id="f-location">
+          </label>
+          <label class="field">
+            <span class="field-label" data-i18n="field.website"></span>
+            <input type="text" id="f-website">
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="field-label" data-i18n="field.summary"></span>
+          <textarea id="f-summary" rows="4"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset class="editor-block">
+        <legend data-i18n="section.experienceForm"></legend>
+        <div id="experience-list" class="list"></div>
+        <button type="button" class="btn btn-add" id="experience-add" data-i18n="btn.addExperience"></button>
+      </fieldset>
+
+      <fieldset class="editor-block">
+        <legend data-i18n="section.educationForm"></legend>
+        <div id="education-list" class="list"></div>
+        <button type="button" class="btn btn-add" id="education-add" data-i18n="btn.addEducation"></button>
+      </fieldset>
+
+      <fieldset class="editor-block">
+        <legend data-i18n="section.skillsForm"></legend>
+        <label class="field">
+          <span class="field-label field-hint" data-i18n="skills.hint"></span>
+          <textarea id="f-skills" rows="5" data-i18n-ph="skills.placeholder"></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset class="editor-block">
+        <legend data-i18n="section.languagesForm"></legend>
+        <div id="languages-list" class="list"></div>
+        <button type="button" class="btn btn-add" id="languages-add" data-i18n="btn.addLanguage"></button>
+      </fieldset>
+    </section>
+
+    <!-- Preview -->
+    <section class="preview-wrap" aria-label="Preview">
+      <div class="cv-preview">
+        <article id="cv" class="cv tpl-classic"></article>
+      </div>
+    </section>
+  </main>
+
+  <!-- State + i18n core -->
+  <script src="js/state.js"></script>
+  <script src="i18n/en.js"></script>
+  <script src="i18n/ru.js"></script>
+  <script src="i18n/hy.js"></script>
+  <script src="js/i18n.js"></script>
+
+  <!-- Feature modules -->
+  <script src="js/photo.js"></script>
+  <script src="js/fields.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/preview.js"></script>
+  <script src="js/templates.js"></script>
+
+  <!-- Vendor libraries for PDF export -->
+  <script src="js/vendor/html2canvas.min.js"></script>
+  <script src="js/vendor/jspdf.umd.min.js"></script>
+  <script src="js/export.js"></script>
+
+  <!-- Bootstrap (last) -->
+  <script src="js/main.js"></script>
+</body>
+</html>

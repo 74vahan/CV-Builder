@@ -1,0 +1,131 @@
+/* Editor panel: fieldsets, fields, repeatable lists */
+
+.editor-block {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px 20px;
+  margin: 0 0 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s var(--ease), border-color .2s var(--ease);
+}
+.editor-block:focus-within {
+  border-color: var(--line-strong);
+  box-shadow: 0 6px 20px rgba(20, 30, 50, 0.08);
+}
+.editor-block legend {
+  font-weight: 700;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent);
+  padding: 0 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 13px;
+}
+.field:last-child { margin-bottom: 0; }
+
+.field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.field-hint { font-weight: 500; color: var(--muted); }
+
+.field input,
+.field textarea {
+  font: inherit;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: var(--panel-2);
+  width: 100%;
+  resize: vertical;
+  transition: border-color .16s var(--ease), box-shadow .16s var(--ease), background .16s var(--ease);
+}
+.field input:hover,
+.field textarea:hover { border-color: var(--line-strong); }
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  background: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(51, 88, 255, 0.14);
+}
+.field input::placeholder,
+.field textarea::placeholder { color: #aeb5c2; }
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+}
+@media (max-width: 520px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* Photo controls */
+.photo-row { margin-bottom: 16px; }
+.photo-controls { display: flex; flex-direction: column; gap: 8px; }
+.photo-buttons { display: flex; gap: 8px; align-items: center; }
+.btn-file { cursor: pointer; display: inline-flex; align-items: center; }
+
+/* Repeatable list items */
+.list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+
+.list-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 13px;
+  background: var(--panel-2);
+  transition: border-color .16s var(--ease), box-shadow .16s var(--ease);
+}
+.list-item:focus-within {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+.list-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.list-item-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+.btn-remove { padding: 4px 11px; font-size: 12px; }
+.btn-remove:hover { background: #ffe9e9; color: #c62f2f; }
+
+.list-item-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+}
+.list-item-grid .field:last-child { margin-bottom: 0; }
+/* Description / full-width fields span both columns. */
+.list-item-grid .field textarea { min-height: 60px; }
+.list-item-grid .field:has(textarea) { grid-column: 1 / -1; }
+
+.btn-add {
+  width: 100%;
+  border: 1px dashed var(--line-strong);
+  background: #fff;
+  color: var(--accent);
+  font-weight: 600;
+}
+.btn-add:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  border-style: solid;
+}

@@ -1,0 +1,12 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+
+# Secrets (нет в проекте, но на всякий случай — секреты только в .env)
+.env
+.env.*
+!.env.example
+
+# Dependencies (если появятся)
+node_modules/

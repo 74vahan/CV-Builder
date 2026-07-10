@@ -1,0 +1,65 @@
+/* Template: Minimal — lots of whitespace, thin type, left-aligned, no color */
+
+.cv.tpl-minimal {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #33383f;
+  padding: 52px 56px;
+}
+
+.tpl-minimal .cv-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 34px;
+}
+.tpl-minimal .cv-photo {
+  width: 84px;
+  height: 84px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.tpl-minimal .cv-name {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+.tpl-minimal .cv-title {
+  font-size: 14px;
+  color: #8a909a;
+  font-weight: 400;
+  margin-top: 2px;
+}
+.tpl-minimal .cv-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #6a717c;
+}
+.tpl-minimal .cv-contacts .cv-ic { margin-right: 4px; opacity: .55; }
+
+.tpl-minimal .cv-section { margin-bottom: 26px; }
+.tpl-minimal .cv-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--cv-accent, #9aa0aa);
+  margin-bottom: 12px;
+}
+
+.tpl-minimal .cv-entry-title { font-weight: 600; font-size: 14px; }
+.tpl-minimal .cv-entry-sub { color: #7a818c; font-size: 13px; }
+.tpl-minimal .cv-entry-period { color: #a2a8b2; font-size: 12px; white-space: nowrap; }
+.tpl-minimal .cv-entry-desc { font-size: 13px; color: #4a505a; }
+.tpl-minimal .cv-summary { font-size: 14px; color: #4a505a; font-weight: 300; }
+
+.tpl-minimal .cv-skills { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.tpl-minimal .cv-skill { font-size: 13px; color: #4a505a; }
+.tpl-minimal .cv-skill::before { content: "— "; color: var(--cv-accent, #b8bdc6); }
+
+.tpl-minimal .cv-langs { display: flex; flex-wrap: wrap; gap: 6px 24px; }
+.tpl-minimal .cv-lang { font-size: 13px; }
+.tpl-minimal .cv-lang-level { color: #a2a8b2; margin-left: 6px; }

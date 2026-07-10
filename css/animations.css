@@ -1,0 +1,62 @@
+/* Animations & micro-interactions.
+   Everything here is decorative — fully disabled under prefers-reduced-motion. */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Editor blocks slide in on first paint, staggered. */
+  .editor-block {
+    animation: rise .5s var(--ease) both;
+  }
+  .editor-block:nth-child(1) { animation-delay: .02s; }
+  .editor-block:nth-child(2) { animation-delay: .07s; }
+  .editor-block:nth-child(3) { animation-delay: .12s; }
+  .editor-block:nth-child(4) { animation-delay: .17s; }
+  .editor-block:nth-child(5) { animation-delay: .22s; }
+
+  /* Topbar drops in. */
+  .topbar { animation: drop .45s var(--ease) both; }
+
+  /* New repeatable-list items pop in when added. */
+  .list-item { animation: pop .32s var(--ease) both; }
+
+  /* The CV sheet fades/rises on the very first render. */
+  .cv-preview { animation: rise .55s var(--ease) both; }
+
+  /* Template switch: re-triggered from JS by toggling .cv-switch. */
+  .cv.cv-switch { animation: swap .42s var(--ease) both; }
+
+  /* Chips gently scale the active one in. */
+  .chip.is-active { animation: chip-in .28s var(--ease); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes drop {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(6px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes swap {
+  from { opacity: 0; transform: translateY(8px) scale(.992); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes chip-in {
+  0%   { transform: scale(.9); }
+  60%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Hard stop for users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

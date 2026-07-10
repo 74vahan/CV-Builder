@@ -1,0 +1,18 @@
+/* Print rules: hide the editor UI, print only the CV sheet */
+
+@media print {
+  @page { size: A4; margin: 0; }
+
+  .no-print { display: none !important; }
+
+  body { background: #fff; }
+
+  .layout { display: block; height: auto; }
+  .preview-wrap { padding: 0; display: block; overflow: visible; }
+
+  .cv {
+    box-shadow: none;
+    width: 210mm;
+    min-height: 297mm;
+  }
+}

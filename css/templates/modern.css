@@ -1,0 +1,87 @@
+/* Template: Modern — colored left sidebar (photo + contacts) + content column */
+
+.cv.tpl-modern {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #2b3038;
+  display: flex;
+  align-items: stretch;
+}
+
+.tpl-modern .cv-header {
+  flex: 0 0 34%;
+  background: #1f2a44;
+  color: #eef2fb;
+  padding: 36px 24px;
+}
+.tpl-modern .cv-photo {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+}
+.tpl-modern .cv-name {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+.tpl-modern .cv-title {
+  font-size: 14px;
+  color: #aeb9d6;
+  text-align: center;
+  margin-top: 6px;
+}
+.tpl-modern .cv-contacts {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 12.5px;
+  word-break: break-word;
+}
+.tpl-modern .cv-contacts li { display: flex; gap: 9px; align-items: baseline; }
+.tpl-modern .cv-contacts .cv-ic { color: var(--cv-accent, #7f9bff); }
+
+.tpl-modern .cv-body { flex: 1; padding: 36px 34px; }
+.tpl-modern .cv-section { margin-bottom: 22px; }
+.tpl-modern .cv-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1f2a44;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 14px;
+}
+.tpl-modern .cv-section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--cv-accent, #2f6bff);
+}
+
+.tpl-modern .cv-entry-title { font-weight: 700; font-size: 14px; }
+.tpl-modern .cv-entry-sub { color: #5c6572; font-size: 13px; }
+.tpl-modern .cv-entry-period { color: #8b93a1; font-size: 12px; white-space: nowrap; }
+.tpl-modern .cv-entry-desc { font-size: 13px; color: #3c424b; }
+.tpl-modern .cv-summary { font-size: 13.5px; color: #3c424b; }
+
+.tpl-modern .cv-skills { display: flex; flex-wrap: wrap; gap: 8px; }
+.tpl-modern .cv-skill {
+  background: #eaf0ff;
+  color: #1f2a44;
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 12.5px;
+}
+
+.tpl-modern .cv-langs { display: flex; flex-direction: column; gap: 6px; }
+.tpl-modern .cv-lang { font-size: 13px; display: flex; justify-content: space-between; max-width: 260px; }
+.tpl-modern .cv-lang-level { color: #8b93a1; }
